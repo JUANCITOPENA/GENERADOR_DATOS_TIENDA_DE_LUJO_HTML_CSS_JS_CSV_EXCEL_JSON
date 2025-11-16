@@ -2,7 +2,7 @@
 
 Este es un mini-proyecto web que consiste en una herramienta avanzada para generar datos sintéticos (mock data) de ventas, simulando las operaciones de una tienda de moda de lujo en la República Dominicana. La interfaz, creada con **HTML, CSS y JavaScript puro**, es moderna, intuitiva y permite al usuario personalizar y descargar los datos en múltiples formatos.
 
-![alt text](https://i.ibb.co/L5hY5F2/generador-datos-screenshot.png)
+![alt text](GENERADOR_DATOS.jpeg)
 
 ## ✨ Características Principales
 
