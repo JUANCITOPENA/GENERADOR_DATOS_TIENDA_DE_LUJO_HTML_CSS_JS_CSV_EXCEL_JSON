@@ -57,9 +57,9 @@ Es muy sencillo. No se requiere instalación ni configuración de un servidor.
 Este proyecto fue diseñado y desarrollado por:  
 **Juancito Peña**  
 
-- GitHub: [@tu-usuario-de-github]  
-- LinkedIn: [@tu-usuario-de-linkedin]  
-- Twitter: [@tu-usuario-de-twitter]  
+- GitHub: [https://github.com/JUANCITOPENA]  
+- LinkedIn: [https://www.linkedin.com/in/juancitope%C3%B1a/]  
+- Youtube: [https://www.youtube.com/@JuancitoDevV]  
 
 ---
 
