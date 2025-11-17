@@ -1,42 +1,65 @@
-# Generador de Datos de Ventas para Tiendas de Lujo
+# 📊 Power BI Learning Hub: Generador de Datos + Simulador de Examen PL-300
 
-Este es un mini-proyecto web que consiste en una herramienta avanzada para generar datos sintéticos (mock data) de ventas, simulando las operaciones de una tienda de moda de lujo en la República Dominicana. La interfaz, creada con **HTML, CSS y JavaScript puro**, es moderna, intuitiva y permite al usuario personalizar y descargar los datos en múltiples formatos.
+Una plataforma web integral, **sin dependencias externas**, diseñada como el campo de entrenamiento definitivo para dominar **Microsoft Power BI**.  
+Este proyecto combina dos herramientas poderosas en una sola interfaz:
 
-![alt text](GENERADOR_DATOS.jpeg)
+1. 🧪 **Generador de Datos Sintéticos** → datasets de ventas de lujo, personalizables y realistas, listos para análisis.  
+2. 🎓 **Guía Educativa + Simulador de Examen PL-300** → aprende conceptos clave y pon a prueba tus conocimientos con más de **120 preguntas**.
 
-## ✨ Características Principales
+> **Ideal para analistas de datos, estudiantes, profesionales de BI y educadores** que necesitan practicar y enseñar Power BI sin depender de datos reales o confidenciales.
 
-- **Interfaz Moderna y Atractiva**: Diseño limpio y profesional con una excelente experiencia de usuario (UI/UX), utilizando una paleta de colores sofisticada e iconos descriptivos.  
-- **Generación de Datos Personalizable**: Permite configurar los siguientes parámetros:  
-  - Rango de Fechas (Fecha de Inicio y Fin).  
-  - Cantidad de Registros a generar.  
-  - Número de Vendedores.  
-  - Número de Productos.  
-- **Datos Realistas**: El script utiliza nombres reales de productos de marcas de lujo (Louis Vuitton, Gucci, Prada, etc.) para darle más realismo a los datos generados.  
-- **Múltiples Formatos de Exportación**: Con un solo clic, el usuario puede descargar los datos generados en tres formatos populares:  
-  - **CSV**: Ideal para hojas de cálculo y análisis de datos simple.  
-  - **Excel (.xlsx)**: Archivo nativo de Excel, generado gracias a la librería SheetJS.  
-  - **JSON**: Perfecto para ser consumido por otras aplicaciones y APIs.  
-- **Modal Interactivo del Autor**: Al hacer clic en la imagen de perfil, se abre una elegante ventana modal con información del desarrollador (Juancito Peña), incluyendo una breve biografía, servicios y enlaces a redes sociales.  
-- **Valores por Defecto Inteligentes**: El formulario se carga con valores predefinidos (fechas, cantidades) para permitir una generación de datos rápida y sin configuración manual.  
-- **Cero Dependencias (Frontend)**: Construido exclusivamente con HTML, CSS y JavaScript vainilla, sin necesidad de frameworks, lo que lo hace extremadamente ligero y rápido.  
+![GIF del Proyecto](GENERADOR_DATOS.gif)  
+*(Sugerencia: reemplaza la imagen estática con un GIF que muestre tanto el generador como el quiz en acción)*
 
 ---
 
-## 🚀 Tecnologías Utilizadas
+## 🎯 ¿Por qué este proyecto?
 
-- **HTML5**: Para la estructura semántica del contenido.  
-- **CSS3**: Para el diseño y la estilización avanzada.  
-- **Flexbox y Grid Layout**: Para crear una maquetación moderna y responsive.  
-- **Animaciones y Transiciones**: Para efectos visuales como el "latido" de la imagen de perfil y las interacciones con los botones.  
-- **JavaScript (ES6+)**: Para toda la lógica de la aplicación:  
-  - Manipulación del DOM.  
-  - Generación de datos aleatorios.  
-  - Creación y descarga dinámica de archivos.  
-- **Librerías Externas**:  
-  - **SheetJS (xlsx.js)**: Para la potente funcionalidad de exportación a formato Excel (.xlsx).  
-  - **Font Awesome**: Para los iconos utilizados en la interfaz.  
-  - **Google Fonts**: Para la tipografía Poppins.  
+En el mundo del análisis de datos, uno de los mayores desafíos es encontrar datasets limpios, relevantes y seguros para practicar.  
+Este proyecto nació para resolver ese problema, ofreciendo una solución **todo en uno** que:
+
+- 🔹 Genera datos sintéticos realistas.  
+- 🔹 Proporciona una guía educativa estructurada.  
+- 🔹 Simula la experiencia de un examen oficial de certificación PL-300.  
+
+Así, puedes **aprender, practicar y validar tus habilidades** en un solo lugar.
+
+---
+
+## ✨ Características Clave
+
+### 1️⃣ Módulo de Generación de Datos
+- 🎨 **Interfaz intuitiva y moderna** → diseño limpio y responsivo con paleta profesional (UI/UX).  
+- ⚙️ **Generación personalizable** → ajusta rango de fechas, cantidad de registros, productos y vendedores.  
+- 👔 **Datos realistas** → productos de marcas de lujo (Louis Vuitton, Gucci, Prada) y estructura coherente.  
+- 📦 **Exportación multifomato**:
+  - **Excel (.xlsx)** → con `SheetJS`.  
+  - **CSV** → máxima compatibilidad.  
+  - **JSON** → ideal para APIs y aplicaciones web.  
+- 👤 **Modal interactivo del autor** → presentación personal y enlaces a redes profesionales.
+
+---
+
+### 2️⃣ Módulo Educativo + Simulación PL-300
+- 📚 **Guía Maestra de Power BI** → desde conceptos básicos hasta técnicas avanzadas de DAX y modelado.  
+- 🎓 **Simulador de examen PL-300**:
+  - 🗂️ Banco de **120 preguntas** (Power Query, DAX, Modelado, Visualización, Ecosistema Power BI).  
+  - 🔀 **Selección aleatoria** → cada intento es único (50 preguntas).  
+  - ⏱️ **Temporizador de 30 minutos** + requisito de **80% para aprobar**.  
+  - 📊 **Revisión y persistencia** → historial de intentos, respuestas correctas/incorrectas y reanudación.  
+- 📜 **Certificados personalizados** → genera y descarga tu diploma en **PNG o PDF** al aprobar.
+
+---
+
+## 🚀 Stack Tecnológico
+
+Construido con enfoque en **simplicidad y rendimiento**, usando tecnologías web fundamentales:
+
+| Frontend | Estilos | Lógica | Librerías | Iconos y Fuentes |
+| :--- | :--- | :--- | :--- | :--- |
+| ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) | ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) | ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) | **SheetJS** (Excel) <br> **jsPDF & html2canvas** (Certificados) | **Font Awesome** (Iconos) <br> **Google Fonts** (Tipografía) |
+
+---
 
 ---
 
