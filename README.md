@@ -1,4 +1,4 @@
-# 📊 Power BI Learning Hub: Generador de Datos y Simulador de Examen PL-300
+# 📊 Power BI Learning Hub: Generador de Datos y Simulador de Examen Quiz
 
 Una plataforma web integral y de cero dependencias diseñada para ser el campo de entrenamiento definitivo para cualquier persona que quiera dominar Microsoft Power BI. Este proyecto combina dos herramientas poderosas en una sola interfaz:
 
