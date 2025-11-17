@@ -1,20 +1,19 @@
-# 📊 Power BI Learning Hub: Generador de Datos y Simulador de Examen Quiz
+# 📊 Power BI Learning Hub: Generador de Datos y Simulador de Examen PL-300
 
 Una plataforma web integral y de cero dependencias diseñada para ser el campo de entrenamiento definitivo para cualquier persona que quiera dominar Microsoft Power BI. Este proyecto combina dos herramientas poderosas en una sola interfaz:
 
 1.  **Un Generador de Datos Sintéticos**: Crea datasets de ventas de lujo, personalizables y realistas, listos para ser analizados.
-2.  **Una Guía Educativa Completa con un Simulador de Examen**: Aprende los conceptos clave y pon a prueba tus conocimientos con un examen de certificación PL-300 que incluye más de 120 preguntas.
+2.  **Una Guía Educativa Completa con un Simulador de Examen**: Aprende los conceptos clave y pon a prueba tus conocimientos con un simulador del examen de certificación **Microsoft PL-300**, que incluye más de 120 preguntas.
 
 **Ideal para analistas de datos, estudiantes, profesionales de BI y educadores** que necesitan practicar y enseñar Power BI sin depender de datos reales o confidenciales.
 
-![GIF del Proyecto](GENERADOR_DATOS.gif)
-*(Sugerencia: Reemplaza la imagen estática con un GIF que muestre tanto el generador como el quiz en acción)*
+![Dashboard Final de Power BI](dashboard.png)
 
 ---
 
 ## 🎯 ¿Por Qué Este Proyecto?
 
-En el mundo del análisis de datos, uno de los mayores desafíos es encontrar datasets limpios, relevantes y seguros para practicar. Este proyecto nació para resolver ese problema, proporcionando una solución "todo en uno" que no solo genera los datos, sino que también ofrece un camino de aprendizaje estructurado y una forma de validar las habilidades adquiridas, simulando la experiencia de una certificación oficial.
+En el mundo del análisis de datos, uno de los mayores desafíos es encontrar datasets limpios, relevantes y seguros para practicar. Este proyecto nació para resolver ese problema, proporcionando una solución "todo en uno" que no solo genera los datos, sino que también ofrece un camino de aprendizaje estructurado y una forma de validar las habilidades adquiridas, simulando la experiencia de la certificación oficial **PL-300 de Power BI**.
 
 ---
 
@@ -60,9 +59,9 @@ Este proyecto fue construido con un enfoque en la simplicidad y el rendimiento, 
 Simplemente sigue estos pasos:
 1.  Clona o descarga este repositorio en tu máquina local.
     ```bash
-    git clone https://github.com/TU_USUARIO/TU_REPOSITORIO.git
+    git clone https://github.com/JUANCITOPENA/Power-BI-Learning-Hub.git # Reemplazar con tu URL
     ```
-2.  Abre el archivo `index.html` en tu navegador web preferido (Google Chrome, Firefox, etc.).
+2.  Abre el archivo `index.html` en tu navegador web preferido.
 3.  **Para generar datos**: Ajusta los parámetros en el formulario y haz clic en el botón del formato que desees (**CSV, Excel o JSON**).
 4.  **Para el examen**: Navega a la sección del quiz, inicia un nuevo intento y pon a prueba tus conocimientos.
 
