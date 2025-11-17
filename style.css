@@ -1,0 +1,281 @@
+/* ================================================= */
+/* ============== ESTILOS PARA EL QUIZ ============= */
+/* ================================================= */
+
+#quiz-container {
+    text-align: center;
+    border-color: #7F39FB; /* Púrpura de Power BI */
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Botones del Quiz */
+.quiz-btn {
+    background: linear-gradient(45deg, var(--accent-color-1), #007b6a);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px 5px;
+}
+.quiz-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 176, 155, 0.3);
+}
+.quiz-btn.secondary-btn {
+    background: #f0f2f5;
+    color: var(--primary-color);
+    border: 1px solid #ccc;
+}
+.quiz-btn.danger-btn {
+    background: #e74c3c;
+}
+
+/* Pantalla Principal del Quiz */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+#question-container {
+    background-color: #f8f9fa;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+#question-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+}
+#answer-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.answer-option {
+    background-color: white;
+    border: 2px solid #ddd;
+    padding: 15px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+.answer-option:hover {
+    border-color: var(--accent-color-1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.answer-option.correct {
+    background-color: #2ecc71 !important;
+    border-color: #27ae60 !important;
+    color: white;
+    font-weight: bold;
+}
+.answer-option.incorrect {
+    background-color: #e74c3c !important;
+    border-color: #c0392b !important;
+    color: white;
+    font-weight: bold;
+}
+.answer-option.disabled {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* Pantalla de Resultados */
+#score-summary {
+    background-color: #f8f9fa;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+.score-pass {
+    color: #27ae60;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+.score-fail {
+    color: #c0392b;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Formulario del Certificado */
+#certificate-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 20px auto;
+}
+#certificate-form input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* ================================================= */
+/* ========= ESTILOS PARA HISTORIAL Y REVISIÓN ===== */
+/* ================================================= */
+
+.history-filters {
+    margin-bottom: 25px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+#history-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.95rem;
+}
+
+#history-content th, #history-content td {
+    border: 1px solid #e0e0e0;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+#history-content th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+}
+
+#history-content tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+#history-content tr:hover {
+    background-color: #f1f1f1;
+}
+
+#history-content .pass {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+#history-content .fail {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+#history-content th.actions-header, #history-content td.actions-cell {
+    text-align: center;
+    width: 220px; /* Aumentado para dar espacio a los botones */
+}
+
+#history-content .action-btn {
+    background: #fff;
+    border: 2px solid #ccc;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 3px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+/* --- INICIO DE LA MEJORA DE ESTILOS --- */
+#history-content .review-attempt-btn {
+    color: #007bff; /* Azul */
+    border-color: #007bff;
+}
+
+#history-content .review-attempt-btn:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+#history-content .regenerate-cert-btn {
+    color: #28a745; /* Verde */
+    border-color: #28a745;
+}
+
+#history-content .regenerate-cert-btn:hover {
+    background-color: #28a745;
+    color: white;
+}
+/* --- FIN DE LA MEJORA DE ESTILOS --- */
+
+#review-content {
+    text-align: left;
+    margin-top: 20px;
+}
+#review-content h4 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.review-question {
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background: #fafafa;
+}
+.review-question p {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+.review-option {
+    margin-left: 20px;
+    display: block;
+    padding: 8px;
+    border-radius: 5px;
+}
+.review-option.correct-answer {
+    color: #27ae60;
+    font-weight: bold;
+    background-color: #e9f7ef;
+}
+.review-option.wrong-selection {
+    color: #c0392b;
+    text-decoration: line-through;
+    background-color: #fdeded;
+}
+
+/* ================================================= */
+/* =========== ESTILOS PARA EL CERTIFICADO ========= */
+/* ================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+#certificate-wrapper { margin-top: 30px; background: var(--secondary-color); padding: 30px; }
+#certificate { background: white; width: 100%; max-width: 800px; aspect-ratio: 1.414 / 1; margin: auto; padding: 40px; position: relative; border: 1px solid #ccc; display: flex; flex-direction: column; justify-content: space-between; text-align: center; }
+#certificate::before, #certificate::after { content: ''; position: absolute; inset: 0; border-radius: 0; pointer-events: none; }
+#certificate::before { border: 10px solid #7F39FB; inset: 0; }
+#certificate::after { border: 2px solid #fcc13a; inset: 12px; }
+.certificate-header { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.certificate-header .logo { max-height: 40px; width: auto; }
+#certificate h1 { font-size: 2rem; color: var(--primary-color); margin: 20px 0 10px; }
+#certificate .subtitle { font-size: 1.1rem; color: #555; }
+#cert-user-name { font-size: 2.5rem; color: var(--accent-color-1); font-family: 'Poppins', sans-serif; font-weight: 700; text-align: center; margin: 10px auto; }
+#certificate .body-text { max-width: 80%; margin: 15px auto; }
+.stats { display: flex; justify-content: space-around; width: 100%; margin: 20px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 10px 0; }
+.stat-item { font-size: 0.9rem; }
+.signature-container { margin-top: auto; }
+.signature-text { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: #005A9E; margin: 0; transform: rotate(-2deg); }
+.signature-title { border-top: 1px solid #555; padding-top: 5px; max-width: 300px; margin: 0 auto; font-size: 0.9rem; }

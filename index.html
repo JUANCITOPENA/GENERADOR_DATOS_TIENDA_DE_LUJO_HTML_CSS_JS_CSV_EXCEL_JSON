@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/38921558?v=4" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Generador de Datos Avanzado - Moda de Lujo</title>
+    <title>Generador de Datos y Guía Maestra de Power BI</title>
 
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,196 +14,168 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- NUEVO: Librería SheetJS para exportar a Excel -->
+    <!-- Librería SheetJS para exportar a Excel -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 
     <style>
         :root {
-            --primary-color: #2c3e50; /* Un azul carbón oscuro */
-            --secondary-color: #f4f7f9; /* Un gris muy claro para el fondo */
-            --accent-color: #d4af37; /* Dorado */
+            --primary-color: #0d2c4a; /* Azul Power BI Oscuro */
+            --secondary-color: #f0f2f5; /* Gris Claro de Fondo */
+            --accent-color-1: #00b09b; /* Verde-Teal Vibrante */
+            --accent-color-2: #fcc13a; /* Amarillo-Dorado Power BI */
             --white-color: #ffffff;
-            --text-color: #34495e;
-            --light-gray: #dfe6e9;
-            --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            --border-radius: 15px;
-            --excel-color: #1D6F42;
-            --json-color: #F7DF1E;
+            --text-color: #333333;
+            --code-bg-color: #252932;
+            --info-color: #e6f7ff;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+            --border-radius: 12px;
+            --pareto-green: "#107c41";
+            --pareto-yellow: "#ffc000";
+            --pareto-red: "#c00000";
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--secondary-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            line-height: 1.8;
             padding: 40px 20px;
-        }
-
-        .container {
-            width: 95%;
-            max-width: 1200px;
-            background: var(--white-color);
-            padding: 40px 50px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--light-gray);
-            padding-bottom: 25px;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        .profile-image-container {
-            cursor: pointer;
-            position: relative;
-        }
-
-        .profile-image {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            border: 4px solid var(--accent-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            animation: heart-beat 1.5s infinite ease-in-out;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .profile-image-container:hover .profile-image {
-            transform: scale(1.1);
-            box-shadow: 0 0 25px var(--accent-color);
-        }
-
-        @keyframes heart-beat {
-            0%, 100% { transform: scale(1); }
-            10%, 30% { transform: scale(1.08); }
-            20%, 40% { transform: scale(1); }
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .input-group {
-            position: relative;
-        }
-
-        .input-group i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #bdc3c7;
-            transition: color 0.3s;
-        }
-        
-        .input-group input:focus + i {
-            color: var(--accent-color);
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
             color: var(--text-color);
         }
 
+        .container {
+            width: 95%; max-width: 1200px; background: var(--white-color);
+            padding: 40px 50px; border-radius: var(--border-radius);
+            box-shadow: var(--shadow); margin: 0 auto 40px auto;
+        }
+
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 40px; border-bottom: 1px solid #e0e0e0; padding-bottom: 25px;
+        }
+
+        h1 { font-size: 2.5rem; color: var(--primary-color); font-weight: 700; }
+
+        .profile-image-container { cursor: pointer; position: relative; }
+        .profile-image {
+            width: 90px; height: 90px; border-radius: 50%; border: 4px solid var(--accent-color-2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); animation: heart-beat 1.5s infinite ease-in-out;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .profile-image-container:hover .profile-image { transform: scale(1.1); box-shadow: 0 0 25px var(--accent-color-2); }
+        @keyframes heart-beat { 0%, 100% { transform: scale(1); } 10%, 30% { transform: scale(1.08); } 20%, 40% { transform: scale(1); } }
+
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .input-group { position: relative; }
+        .input-group i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #bdc3c7; transition: color 0.3s; }
+        .input-group input:focus + i { color: var(--accent-color-1); }
+        label { display: block; margin-bottom: 10px; font-weight: 600; color: var(--primary-color); }
         input {
-            width: 100%;
-            padding: 15px 15px 15px 45px;
-            border-radius: 10px;
-            border: 1px solid var(--light-gray);
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            width: 100%; padding: 15px 15px 15px 45px; border-radius: 8px; border: 1px solid #ccc;
+            font-size: 1rem; font-family: 'Poppins', sans-serif; transition: border-color 0.3s, box-shadow 0.3s;
         }
+        input:focus { outline: none; border-color: var(--accent-color-1); box-shadow: 0 0 0 4px rgba(0, 176, 155, 0.15); }
 
-        input:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
-        }
-
-        .export-buttons-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-
+        .export-buttons-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
         .export-btn {
-            color: var(--white-color);
-            cursor: pointer;
-            font-weight: bold;
-            padding: 18px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            transition: transform 0.2s, box-shadow 0.3s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
+            color: var(--white-color); cursor: pointer; font-weight: bold; padding: 18px; border: none;
+            border-radius: 8px; font-size: 1.1rem; transition: transform 0.2s, box-shadow 0.3s;
+            display: flex; justify-content: center; align-items: center; gap: 12px;
         }
+        .export-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        .btn-csv { background: linear-gradient(45deg, #2c3e50, #34495e); }
+        .btn-excel { background: linear-gradient(45deg, #1D6F42, #27ae60); }
+        .btn-json { background: linear-gradient(45deg, #E67E22, #F39C12); color: #fff;}
         
-        .export-btn:hover {
-            transform: translateY(-3px);
+        .footer { text-align: center; margin-top: 40px; font-size: 0.9rem; color: #95a5a6; }
+        
+        /* --- ESTILOS DE LA GUÍA EDUCATIVA --- */
+        .guide-section { width: 95%; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
+        .guide-card {
+            background: var(--white-color); padding: 40px; border-radius: var(--border-radius);
+            box-shadow: var(--shadow); border-left: 5px solid var(--accent-color-1);
         }
-
-        .btn-csv { background: linear-gradient(45deg, var(--primary-color), #34495e); }
-        .btn-csv:hover { box-shadow: 0 8px 20px rgba(44, 62, 80, 0.3); }
-
-        .btn-excel { background: linear-gradient(45deg, var(--excel-color), #27ae60); }
-        .btn-excel:hover { box-shadow: 0 8px 20px rgba(29, 111, 66, 0.3); }
-
-        .btn-json { background: linear-gradient(45deg, #E67E22, #F39C12); color: #2c3e50;}
-        .btn-json:hover { box-shadow: 0 8px 20px rgba(243, 156, 18, 0.3); }
-
-
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 0.9rem;
-            color: #95a5a6;
+        .guide-card h2, .guide-card h3, .guide-card h4 { color: var(--primary-color); }
+        .guide-card h2 { font-size: 2.2rem; margin-bottom: 20px; display: flex; align-items: center; gap: 15px; }
+        .guide-card h3 { font-size: 1.7rem; margin-top: 30px; margin-bottom: 15px; border-bottom: 2px solid var(--accent-color-2); padding-bottom: 8px; }
+        .guide-card h4 { font-size: 1.3rem; margin-top: 25px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; color: #1e3a56; }
+        .guide-card p, .guide-card li { font-size: 1rem; margin-bottom: 10px; color: var(--text-color); }
+        .guide-card strong { color: var(--primary-color); font-weight: 600; }
+        .guide-card ol { padding-left: 25px; }
+        .guide-card ol li::marker { font-weight: bold; color: var(--accent-color-1); }
+        
+        .code-block { margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .code-header {
+            display: flex; justify-content: space-between; align-items: center;
+            background: #3c414d; padding: 10px 15px; color: #e0e0e0; font-weight: 600;
         }
-
-        /* --- Modal Styles (sin cambios) --- */
+        .code-header span { font-family: monospace; }
+        .copy-btn {
+            background: none; border: 1px solid var(--accent-color-1); color: var(--accent-color-1);
+            padding: 5px 10px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s, color 0.3s;
+        }
+        .copy-btn:hover { background-color: var(--accent-color-1); color: var(--code-bg-color); }
+        
+        .code-block pre {
+            background-color: var(--code-bg-color); color: #f8f8f2; padding: 20px;
+            overflow-x: auto; white-space: pre-wrap; margin: 0;
+        }
+        .code-block pre code { font-family: 'Consolas', 'Courier New', monospace; font-size: 0.95rem; }
+        
+        .info-box {
+            background-color: var(--info-color); border-left: 4px solid #1890ff; padding: 20px;
+            margin: 20px 0; border-radius: 8px;
+        }
+        .info-box p { margin: 0; }
+        
+        .dashboard-layout {
+            border: 2px dashed #ccc; padding: 20px; margin-top: 20px;
+            border-radius: 10px; text-align: center; background: #fafafa;
+        }
+        .dashboard-layout .kpis, .dashboard-layout .slicers, .dashboard-layout .charts {
+            background: #e9ecef; padding: 10px; border-radius: 5px;
+        }
+        .dashboard-layout .kpis { margin-bottom: 10px; }
+        .dashboard-layout .main-content { display: flex; gap: 10px; }
+        .dashboard-layout .slicers { width: 25%; }
+        .dashboard-layout .charts { flex: 1; }
+        
+        /* Modal Styles */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.7); backdrop-filter: blur(5px); }
         .modal-content { position: relative; background-color: #fff; margin: 5% auto; padding: 0; width: 90%; max-width: 650px; border-radius: var(--border-radius); box-shadow: 0 5px 25px rgba(0,0,0,0.4); text-align: center; overflow: hidden; animation: zoomIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
         @keyframes zoomIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
-        .modal-header { background: linear-gradient(45deg, var(--primary-color), #34495e); padding: 60px 20px 80px 20px; position: relative; }
-        .modal-profile-image { width: 180px; height: 180px; border-radius: 50%; border: 6px solid var(--accent-color); position: absolute; bottom: -90px; left: 50%; transform: translateX(-50%); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .modal-header { background: linear-gradient(45deg, var(--primary-color), #1e3a56); padding: 60px 20px 80px 20px; position: relative; }
+        .modal-profile-image { width: 180px; height: 180px; border-radius: 50%; border: 6px solid var(--accent-color-2); position: absolute; bottom: -90px; left: 50%; transform: translateX(-50%); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .close-button { color: #fff; position: absolute; top: 15px; right: 25px; font-size: 35px; font-weight: bold; cursor: pointer; transition: transform 0.2s; }
         .close-button:hover { transform: rotate(90deg); }
         .modal-body { padding: 110px 40px 40px 40px; }
         .modal-body h2 { font-size: 2.2rem; margin-bottom: 5px; color: var(--primary-color); }
-        .modal-body h3 { font-size: 1.2rem; margin-bottom: 20px; color: var(--accent-color); font-weight: 600; }
-        .modal-body p { font-size: 1rem; line-height: 1.7; margin-bottom: 30px; color: #626262; }
-        .services h4 { font-size: 1.1rem; color: var(--primary-color); margin-bottom: 15px; border-bottom: 2px solid var(--accent-color); display: inline-block; padding-bottom: 5px; }
+        .modal-body h3 { font-size: 1.2rem; margin-bottom: 20px; color: var(--accent-color-1); font-weight: 600; }
+        .modal-body p { font-size: 1rem; line-height: 1.7; margin-bottom: 30px; color: #555; }
+        .services h4 { font-size: 1.1rem; color: var(--primary-color); margin-bottom: 15px; border-bottom: 2px solid var(--accent-color-2); display: inline-block; padding-bottom: 5px; }
         .services ul { list-style: none; padding: 0; margin-bottom: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
         .services li { background: var(--secondary-color); padding: 10px 20px; border-radius: 50px; font-weight: 600; color: var(--text-color); }
-        .services li i { color: var(--accent-color); margin-right: 8px; }
-        .social-links a { margin: 0 12px; text-decoration: none; font-size: 1.8rem; color: var(--light-gray); background-color: var(--primary-color); width: 50px; height: 50px; display: inline-flex; justify-content: center; align-items: center; border-radius: 50%; transition: transform 0.3s, background-color 0.3s; }
-        .social-links a:hover { transform: translateY(-5px) scale(1.1); background-color: var(--accent-color); color: var(--white-color); }
+        .services li i { color: var(--accent-color-1); margin-right: 8px; }
+        .social-links a { margin: 0 12px; text-decoration: none; font-size: 1.8rem; color: #f0f2f5; background-color: var(--primary-color); width: 50px; height: 50px; display: inline-flex; justify-content: center; align-items: center; border-radius: 50%; transition: transform 0.3s, background-color 0.3s; }
+        .social-links a:hover { transform: translateY(-5px) scale(1.1); background-color: var(--accent-color-1); color: var(--white-color); }
+.imagen-encabezado {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.imagen-encabezado img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px; /* opcional: bordes redondeados */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* opcional: sombra suave */
+}
+
     </style>
 </head>
 <body>
@@ -214,7 +186,6 @@
                 <img src="https://avatars.githubusercontent.com/u/38921558?v=4" alt="Foto de Juancito Peña" class="profile-image">
             </div>
         </header>
-
         <main>
             <div class="form-grid">
                 <div class="input-group">
@@ -257,14 +228,636 @@
             </div>
         </main>
 
-        <footer class="footer">
-            <p>&copy; 2025 | Diseñado y desarrollado con ❤️ por Juancito Peña</p>
-        </footer>
+        
     </div>
+
+
+
+
+<!-- INICIO DE LA GUÍA EDUCATIVA DE POWER BI -->
+<section class="guide-section">
+
+    <!-- DEFINICIÓN DE POWER BI -->
+    <div class="guide-card">
+        <h2><i class="fas fa-database" style="color: var(--accent-color-1);"></i> Sección 0.1: ¿Qué es Power BI?</h2>
+        <p>✨ <strong>Power BI</strong> es la plataforma de <em>inteligencia de negocios</em> creada por Microsoft, diseñada para transformar datos en información clara y accionable. Con Power BI puedes:</p>
+        <ul>
+            <li>✅ Conectar con cientos de fuentes de datos (Excel, SQL, APIs, servicios en la nube).</li>
+            <li>✅ Transformar y limpiar datos con <strong>Power Query</strong>.</li>
+            <li>✅ Crear modelos robustos con <strong>DAX</strong> y medidas personalizadas.</li>
+            <li>✅ Construir dashboards interactivos con KPIs, segmentadores y visuales dinámicos.</li>
+            <li>✅ Publicar y compartir informes en la nube o en dispositivos móviles.</li>
+        </ul>
+        <p>🌍 Power BI es reconocido como líder global en analítica, siendo la herramienta preferida para empresas, analistas y creadores de contenido educativo.</p>
+    </div>
+    <div class="imagen-encabezado">
+        <img src="https://learn.microsoft.com/es-es/training/media/products/power-platform/power%20bi/power-bi-overview.png" alt="Banner de Power BI" />
+    </div>
+
+    <!-- MICROSOFT FABRIC -->
+    <div class="guide-card">
+        <h2><i class="fas fa-network-wired" style="color: var(--accent-color-1);"></i> Sección 0.2: Microsoft Fabric y la IA</h2>
+        <p>🚀 <strong>Microsoft Fabric</strong> es la evolución del ecosistema de datos de Microsoft, integrando Power BI con servicios de <em>Data Engineering, Data Science, Real-Time Analytics</em> y <em>IA</em>. Con Fabric puedes:</p>
+        <ul>
+            <li>✅ Unificar almacenamiento y procesamiento de datos en un solo entorno.</li>
+            <li>✅ Integrar modelos de IA para predicciones y recomendaciones.</li>
+            <li>✅ Escalar proyectos de analítica desde pequeños dashboards hasta soluciones empresariales.</li>
+            <li>✅ Conectar Power BI directamente con <em>Lakehouse</em> y <em>Dataflows Gen2</em>.</li>
+        </ul>
+        <p>💡 Fabric convierte a Power BI en una herramienta no solo de análisis, sino también de <strong>inteligencia predictiva</strong>.</p>
+    </div>
+    <div class="imagen-encabezado">
+        <img src="https://d1ub0o53i85pdh.cloudfront.net/uploads/2025/09/MHD-1485-Scheme_1.png" alt="Microsoft Fabric" />
+    </div>
+
+    <!-- FUNCIONES DAX Y POWER QUERY -->
+    <div class="guide-card">
+        <h2><i class="fas fa-code" style="color: var(--accent-color-1);"></i> Sección 0.3: DAX y Power Query</h2>
+        <p>📊 El corazón de Power BI está en <strong>DAX</strong> y <strong>Power Query</strong>. Estas dos herramientas permiten transformar y calcular datos con precisión:</p>
+        <h3>🔑 Top 15 funciones DAX que debes dominar:</h3>
+        <ul>
+            <li>SUM, CALCULATE, FILTER, ALL, ALLSELECTED</li>
+            <li>DIVIDE, RANKX, SAMEPERIODLASTYEAR, DATEADD</li>
+            <li>SWITCH, IF, VALUES, RELATED, DISTINCTCOUNT, VAR</li>
+        </ul>
+        <h3>⚙️ Power Query</h3>
+        <ul>
+            <li>✅ Limpieza y transformación de datos.</li>
+            <li>✅ Creación de columnas calculadas y tipos de datos.</li>
+            <li>✅ Automatización de procesos ETL (Extract, Transform, Load).</li>
+            <li>✅ Preparación de datos para el modelado en Power BI.</li>
+        </ul>
+        <p>💡 Dominar estas funciones y procesos te permitirá construir dashboards sólidos y confiables.</p>
+
+    <div class="imagen-encabezado">
+        <img src="
+        https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFygYf-708hyf_AqjSr8dmmdzli_DDX3fCHw&s" alt="Microsoft Fabric" />
+    </div>
+    </div>
+
+    <!-- CUADRANTE GARTNER -->
+    <div class="guide-card">
+        <h2><i class="fas fa-chart-line" style="color: var(--accent-color-1);"></i> Sección 0.4: Power BI en el Cuadrante Gartner</h2>
+        <p>🏆 Año tras año, <strong>Power BI</strong> aparece en la primera posición del <em>Cuadrante Mágico de Gartner</em> en la categoría de plataformas de analítica y BI. Esto significa:</p>
+        <ul>
+            <li>✅ Liderazgo en visión estratégica.</li>
+            <li>✅ Capacidad de ejecución superior frente a competidores.</li>
+            <li>✅ Innovación constante con IA y Fabric.</li>
+            <li>✅ Comunidad global activa y en crecimiento.</li>
+        </ul>
+        <p>🌍 Este reconocimiento valida que Power BI no solo es una herramienta técnica, sino también una plataforma estratégica para empresas y creadores de contenido.</p>
+    </div>
+    <div class="imagen-encabezado">
+        <img src="https://www.mistralbs.com/wp-content/uploads/2025/07/Imagen2.png" alt="Cuadrante Gartner Power BI" />
+    </div>
+
+</section>
+
+
+
+
+
+
+    <!-- INICIO DE LA GUÍA EDUCATIVA DE POWER BI -->
+    <section class="guide-section">
+           
+        <div class="guide-card">
+            <h2><i class="fas fa-plug" style="color: var(--accent-color-1);"></i>Sección 1: Conexión Dinámica de Datos</h2>
+            <p>La base de un informe de Power BI robusto y auto-actualizable es conectar los datos de forma inteligente. En lugar de apuntar a un único archivo, nos conectaremos a una carpeta. Esto te permitirá simplemente arrastrar nuevos archivos generados a la carpeta y, con un solo clic en "Actualizar" en Power BI, tener tu dashboard al día.</p>
+            <div class="imagen-encabezado">
+        <img src="https://cribi.cl/assets/images/flujo-de-trabajo-power-bi.jpeg" alt="Cuadrante Gartner Power BI" />
+    </div>
+        
+        </div>
+
+        <div class="guide-card">
+            <h2><i class="fas fa-calendar-alt" style="color: var(--accent-color-1);"></i>Sección 2: La Tabla Calendario Definitiva</h2>
+            <h3>Paso Previo Esencial 🗓️</h3>
+            <p>Ningún análisis de inteligencia de tiempo (YoY, MoM, etc.) es fiable sin una tabla de calendario robusta. Esta tabla actúa como el "cerebro" del tiempo en tu modelo de datos. Después de cargar tus datos, ve a <strong>Modelado > Nueva tabla</strong> y pega este código. Luego, en la vista de Modelo, crea una relación entre <code>Calendario[Fecha]</code> y <code>Data_Final[Fecha]</code>.</p>
+            <div class="info-box"><p>💡 <strong>¿Por qué es tan importante?</strong> Esta tabla crea una secuencia de fechas ininterrumpida, lo que permite a las funciones de DAX como <code>SAMEPERIODLASTYEAR</code> funcionar correctamente.</p></div>
+            <div class="code-block">
+                <div class="code-header"><span>DAX: Tabla Calendario Profesional</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> Copiar</button></div>
+                <pre><code>Calendario = 
+ADDCOLUMNS (
+    CALENDARAUTO (),
+    "Año", YEAR ( [Date] ),
+    "Mes", FORMAT ( [Date], "mmmm" ),
+    "NumMes", MONTH ( [Date] ),
+    "Trimestre", "Q" & FORMAT ( [Date], "q" ),
+    "AñoTrimestre", YEAR ( [Date] ) & " Q" & FORMAT ( [Date], "q" ),
+    "AñoMes", FORMAT ( [Date], "yyyy-mm" ),
+    "DiaSemana", FORMAT ( [Date], "dddd" ),
+    "NumDiaSemana", WEEKDAY ( [Date], 2 ), // Lunes=1, Domingo=7
+    "NumSemanaAño", WEEKNUM ( [Date], 2 ) // La semana empieza el Lunes
+)</code></pre>
+            </div>
+        </div>
+        
+        <div class="guide-card">
+            <h2><i class="fas fa-calculator" style="color: var(--accent-color-1);"></i>Sección 3: Set de Medidas DAX Esenciales</h2>
+            
+            <h3>💰 Medidas Financieras Básicas</h3>
+            
+            <h4><i class="fas fa-dollar-sign"></i> Total Ventas</h4>
+            <p><strong>Qué es:</strong> La suma total de los ingresos por ventas. Es el KPI principal.<br><strong>Por qué es importante:</strong> Mide el volumen general de negocio y es la base para casi todos los demás ratios financieros.</p>
+            <ol>
+                <li>En la vista de Informe, haz clic derecho sobre tu tabla <code>Data_Final</code> en el panel de Campos.</li>
+                <li>Selecciona <strong>Nueva Medida</strong>.</li>
+                <li>Pega el siguiente código en la barra de fórmulas.</li>
+            </ol>
+            <div class="code-block">
+                <div class="code-header"><span>DAX: Medida</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> Copiar</button></div>
+                <pre><code>Total Ventas = SUM(Data_Final[Ventas])</code></pre>
+            </div>
+
+            <p><em>(Repite el mismo proceso para las siguientes medidas básicas)</em></p>
+            <div class="code-block">
+                <div class="code-header"><span>DAX: Medidas Financieras Adicionales</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> Copiar</button></div>
+                <pre><code>Total Costos = SUM(Data_Final[Costo])
+Total Margen = SUM(Data_Final[Margen])
+Total Gastos = SUM(Data_Final[Gastos])
+Total Beneficio = SUM(Data_Final[Beneficio])</code></pre>
+            </div>
+            
+          <h3>📅 Inteligencia de Fecha</h3>
+
+<h4><i class="fas fa-chart-line"></i> Crecimiento Anual (YoY)</h4>
+<p>
+  <strong>Qué es:</strong> Compara las ventas del año en curso con las del año anterior.<br>
+  <strong>Por qué es importante:</strong> Es el indicador de crecimiento más utilizado. Un YoY positivo indica que el negocio está creciendo.
+</p>
+
+<div class="info-box">
+  <p>💡 Crea estas medidas en orden. <strong>Nota:</strong> Usaremos la función <code>SAMEPERIODLASTYEAR</code>, que es más robusta que filtrar por <code>YEAR(TODAY())</code>, ya que funciona para cualquier período de tiempo seleccionado en tu informe (no solo el año actual).</p>
+</div>
+
+<div class="code-block">
+  <div class="code-header">
+    <span>DAX: Medidas YoY</span>
+    <button class="copy-btn" onclick="copyCode(this)">
+      <i class="fas fa-copy"></i> Copiar
+    </button>
+  </div>
+  <pre><code>
+Ventas Año Actual = 
+CALCULATE(
+    [Total Ventas],
+    YEAR('Calendario'[Date]) = YEAR(TODAY())
+)
+
+Ventas Año Anterior = 
+CALCULATE(
+    [Total Ventas],
+    SAMEPERIODLASTYEAR('Calendario'[Date])
+)
+
+Diferencia Ventas Año = 
+[Ventas Año Actual] - [Ventas Año Anterior]
+
+Crecimiento % Año = 
+DIVIDE([Diferencia Ventas Año], [Ventas Año Anterior])
+  </code></pre>
+</div>
+
+            <h3>🧠 Porcentajes y Ratios</h3>
+            <h4><i class="fas fa-percentage"></i> Margen % Real</h4>
+            <p><strong>Qué es:</strong> El porcentaje de las ventas que se convierte en margen bruto.<br><strong>Por qué es importante:</strong> Mide la eficiencia de la política de precios y el costo de los bienes. Un margen alto es señal de buena salud financiera.</p>
+            <div class="code-block">
+                <div class="code-header"><span>DAX: Ratios Clave</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> Copiar</button></div>
+                <pre><code>Margen % Real = DIVIDE([Total Margen], [Total Ventas])
+Beneficio % Real = DIVIDE([Total Beneficio], [Total Ventas])
+Ratio Gastos/Ventas = DIVIDE([Total Gastos], [Total Ventas])</code></pre>
+            </div>
+             <div class="info-box"><p>💡 Selecciona estas medidas y, en la pestaña "Herramientas de medición", formatea como <strong>Porcentaje</strong>.</p></div>
+        </div>
+
+
+        
+
+
+
+<div class="guide-card">
+  <h2><i class="fas fa-trophy" style="color: var(--accent-color-1);"></i>Sección 4: Ranking y Análisis de Pareto</h2>
+
+  <div class="imagen-encabezado">
+  <img src="pareto.png" alt="Descripción de la imagen" />
+</div>
+
+
+  <h3>🏆 Ranking de Productos por Ventas</h3>
+  <p><strong>Qué es:</strong> Asigna un número de ranking a cada producto basado en sus ventas totales.<br>
+  <strong>Por qué es importante:</strong> Identifica rápidamente tus productos estrella y los que tienen bajo rendimiento.</p>
+
+  <div class="code-block">
+    <div class="code-header"><span>DAX: Medida de Ranking</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> Copiar</button>
+    </div>
+    <pre><code>
+Ranking Producto = 
+RANKX(
+    ALLSELECTED(Data_Final[Producto]),
+    [Total Ventas],
+    ,
+    DESC,
+    DENSE
+)
+    </code></pre>
+  </div>
+
+  <h3>📊 Pareto 80/20 con Segmentación y Color</h3>
+  <p><strong>Qué es:</strong> El principio de Pareto establece que, para muchos eventos, aproximadamente el 80% de los efectos provienen del 20% de las causas. Aquí identificaremos qué pequeño porcentaje de productos genera la mayor parte de las ventas.<br>
+  <strong>Por qué es importante:</strong> Permite enfocar los esfuerzos de marketing, gestión de inventario y estrategia en los productos que realmente impulsan el negocio.</p>
+
+  <ol>
+    <li>Crea la medida de <code>Ranking Producto</code> (arriba).</li>
+    <li>Crea las siguientes medidas para el cálculo acumulado.</li>
+    <li>Finalmente, crea la medida de color para la visualización.</li>
+  </ol>
+
+  <div class="code-block">
+    <div class="code-header"><span>DAX: Medidas para Pareto</span>
+      <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> Copiar</button>
+    </div>
+    <pre><code>
+Acumulado Ventas Producto = 
+VAR RankingActual =
+    RANKX(
+        ALLSELECTED(Data_Final[Producto]),
+        [Total Ventas],
+        ,
+        DESC,
+        DENSE
+    )
+RETURN
+    CALCULATE(
+        [Total Ventas],
+        FILTER(
+            ALLSELECTED(Data_Final[Producto]),
+            RANKX(
+                ALLSELECTED(Data_Final[Producto]),
+                [Total Ventas],
+                ,
+                DESC,
+                DENSE
+            ) <= RankingActual
+        )
+    )
+
+% Acumulado Ventas = 
+DIVIDE(
+    [Acumulado Ventas Producto],
+    CALCULATE([Total Ventas], ALLSELECTED(Data_Final))
+)
+
+Color Pareto = 
+SWITCH(TRUE(),
+    [% Acumulado Ventas] <= 0.80, "#107c41", -- Verde (Top 80%)
+    [% Acumulado Ventas] <= 0.95, "#ffc000", -- Amarillo (Siguiente 15%)
+    "#c00000"                                -- Rojo (Último 5%)
+)
+    </code></pre>
+  </div>
+
+  <h3>🛠️ Paso a Paso en Power BI</h3>
+  <ol>
+    <li><strong>Importa tu dataset</strong> en Power BI Desktop (ej. tabla <code>Data_Final</code> con columnas Producto y Ventas).</li>
+    <li><strong>Crea las medidas</strong> anteriores en el panel de Modelado (Ranking, Acumulado, % Acumulado, Color).</li>
+    <li><strong>Tabla de validación:</strong> Inserta una tabla visual y coloca:
+      <ul>
+        <li><code>Producto</code></li>
+        <li><code>[Total Ventas]</code></li>
+        <li><code>[Ranking Producto]</code></li>
+        <li><code>[Acumulado Ventas Producto]</code></li>
+        <li><code>[% Acumulado Ventas]</code></li>
+        <li><code>[Color Pareto]</code></li>
+      </ul>
+      Esto te permitirá validar que el cálculo funciona correctamente.</li>
+    <li><strong>Gráfico de Pareto:</strong>
+      <ul>
+        <li>En el panel de visualizaciones, selecciona <strong>Gráfico combinado: columnas agrupadas + línea</strong>.</li>
+        <li>En <strong>Eje X</strong>, arrastra <code>Producto</code> y ordena por <code>[Ranking Producto]</code> (descendente).</li>
+        <li>En <strong>Valores de columnas</strong>, arrastra <code>[Total Ventas]</code>.</li>
+        <li>En <strong>Valores de línea</strong>, arrastra <code>[% Acumulado Ventas]</code>.</li>
+        <li>Activa el <strong>Eje secundario</strong> para la línea y cambia el formato a porcentaje.</li>
+      </ul>
+    </li>
+    <li><strong>Colores dinámicos:</strong> En el gráfico de columnas, ve a <strong>Formato visual → Colores de datos → Formato condicional</strong> y aplica la medida <code>[Color Pareto]</code>.</li>
+    <li><strong>Interactividad:</strong> Añade segmentadores de fecha, categoría o ubicación para analizar cómo cambia el Pareto según filtros.</li>
+  </ol>
+
+  <p><strong>Resultado esperado:</strong> Un gráfico de columnas con colores dinámicos y una línea de acumulado que muestra claramente qué porcentaje de productos genera el 80% de las ventas. Esto es tu <em>Gráfico de Pareto</em> en Power BI.</p>
+
+  <div class="imagen-encabezado">
+  <img src="resultado_pareto.png" alt="Descripción de la imagen" />
+</div>
+
+
+</div>
+
+
+
+
+<div class="guide-card">
+  <h2><i class="fas fa-eye" style="color: var(--accent-color-1);"></i>Sección 5: Creación de Visuales e Insights</h2>
+
+  <h3>🎨 Plantilla Visual para Inspirarnos</h3>
+  <p>Como vemos, tenemos una plantilla que podemos utilizar para inspirarnos. Esta estructura está compuesta por <strong>cuatro apartados principales</strong>, cada uno con una función específica dentro del dashboard:</p>
+
+  <ul>
+    <li><strong>Encabezado superior:</strong> Espacio para el título del dashboard, logotipo y enlaces de navegación.</li>
+    <li><strong>Fila de KPIs:</strong> Seis tarjetas para mostrar métricas clave del negocio.</li>
+    <li><strong>Columna lateral izquierda:</strong> Cinco segmentadores para filtrar los datos por criterios relevantes.</li>
+    <li><strong>Zona principal de gráficos:</strong> Cuatro espacios para visualizaciones y tablas que revelan insights.</li>
+  </ul>
+
+  <div class="imagen-encabezado">
+    <img src="plantilla.png" alt="Plantilla de layout de dashboard" />
+  </div>
+
+  <h3>🧩 Recomendaciones para llenar cada apartado</h3>
+
+  <h4>🔝 1. Encabezado Superior</h4>
+  <p>Coloca el <strong>nombre del dashboard</strong> (ej. “Panel de Ventas de Moda de Lujo”), tu <strong>logotipo</strong> y enlaces útiles como “Documentación”, “Contacto” o “Exportar”.</p>
+
+  <h4>📊 2. Tarjetas KPI (kpi #1 a kpi #6)</h4>
+  <p>Usa el visual <strong>Tarjeta</strong> para mostrar las siguientes medidas clave:</p>
+  <ul>
+    <li><code>Total Ventas</code></li>
+    <li><code>Total Beneficio</code></li>
+    <li><code>Margen % Real</code></li>
+    <li><code>Crecimiento % Año</code></li>
+    <li><code>Ratio Gastos/Ventas</code></li>
+    <li><code>Ventas Año Actual</code> vs <code>Ventas Año Anterior</code> (puedes usar una tarjeta con indicador de variación)</li>
+  </ul>
+
+  <h4>🎛️ 3. Segmentadores (segmentador 1 a 5)</h4>
+  <p>Usa el visual <strong>Segmentación de datos</strong> para permitir al usuario filtrar el dashboard:</p>
+  <ul>
+    <li><code>Calendario[Año]</code></li>
+    <li><code>Calendario[Trimestre]</code></li>
+    <li><code>Data_Final[Ubicacion]</code></li>
+    <li><code>Data_Final[Categoria]</code></li>
+    <li><code>Data_Final[Entidad]</code></li>
+  </ul>
+
+  <h4>📈 4. Zona de Gráficos y Tablas (grafico #1 a #4)</h4>
+  <p>Estos espacios están pensados para mostrar visualizaciones que revelen insights profundos:</p>
+
+  <ul>
+    <li><strong>Gráfico #1 – Pareto de Productos:</strong> Ya lo construimos en la sección anterior. Aquí lo colocamos como visual principal.</li>
+
+    <li><strong>Gráfico #2 – Comparativo de Beneficio por Ubicación:</strong>
+      <ul>
+        <li>Visual: <strong>Gráfico de barras agrupadas</strong></li>
+        <li>Eje X: <code>Data_Final[Ubicacion]</code></li>
+        <li>Valores: <code>Total Beneficio</code></li>
+        <li>Segmenta por <code>Categoria</code> para ver diferencias por tipo de producto</li>
+      </ul>
+    </li>
+
+    <li><strong>Gráfico #3 – Tendencia de Ventas por Mes:</strong>
+      <ul>
+        <li>Visual: <strong>Gráfico de líneas</strong></li>
+        <li>Eje X: <code>Calendario[Fecha]</code> (agrupado por mes)</li>
+        <li>Valores: <code>Total Ventas</code></li>
+        <li>Agrega <code>Ventas Año Anterior</code> como línea comparativa</li>
+      </ul>
+    </li>
+
+    <li><strong>Gráfico #4 – Tabla de Productos con KPIs:</strong>
+      <ul>
+        <li>Visual: <strong>Tabla</strong></li>
+        <li>Columnas: <code>Producto</code>, <code>Total Ventas</code>, <code>Total Beneficio</code>, <code>Margen % Real</code>, <code>Ranking Producto</code></li>
+        <li>Ordena por <code>Total Ventas</code> o <code>Ranking Producto</code></li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="info-box">
+    <p>✍️ <strong>Storytelling:</strong> Esta plantilla te permite construir un dashboard que no solo muestra datos, sino que cuenta una historia. Las tarjetas KPI resumen el estado del negocio, los segmentadores permiten exploración personalizada, y los gráficos revelan patrones, tendencias y oportunidades. Es una estructura ideal para presentar resultados, tomar decisiones y enseñar análisis de datos.</p>
+  </div>
+
+  <div class="imagen-encabezado">
+    <img src="dashboard.png" alt="Ejemplo visual del dashboard final" />
+  </div>
+
+
+
+  
+  <div class="imagen-encabezado">
+    <img src="dashboard_apuntes.png" alt="Ejemplo visual del dashboard final" />
+  </div>
+  
+
+
+  <div class="tooltip-section">
+  <h4>🧠✨ Uso estratégico de Tooltips</h4>
+
+  <p><strong>🔍 Gráfico de Pareto con tooltip en la línea:</strong> Para enriquecer la experiencia del usuario, puedes agregar un <em>tooltip personalizado</em> sobre la línea de acumulado en el gráfico de Pareto. Al pasar el cursor, se mostrará una mini visualización que refuerza el insight, como una tabla con el ranking de productos o una tarjeta con el porcentaje acumulado actual. Esto convierte la línea en un punto interactivo que revela el impacto del 80/20 sin saturar el gráfico principal.</p>
+
+    <div class="imagen-encabezado">
+    <img src="tooltips1.png" alt="Ejemplo visual del dashboard final" />
+  </div>
+  
+
+  <p><strong>📌 Beneficio por producto con tooltip de ventas por ubicación:</strong> En el gráfico de barras que muestra el <code>Total Beneficio</code> por producto, puedes configurar un <em>tooltip dinámico</em> que revele las <code>Ventas por Ubicación</code> al pasar el cursor sobre cada barra. Esto permite al usuario entender no solo cuánto beneficio genera cada producto, sino también dónde se vende mejor. Es una forma elegante de cruzar métricas sin perder claridad visual.</p>
+
+
+    <div class="imagen-encabezado">
+    <img src="tooltips.png" alt="Ejemplo visual del dashboard final" />
+  </div>
+  
+</div>
+
+
+
+
+</div>
+
+
+
+
+<div class="conclusion-section">
+  <h2><i class="fas fa-flag-checkered" style="color: var(--accent-color-1);"></i> 🏁 Conclusión Final</h2>
+
+  <p>Este recurso no es solo una guía técnica. Es una experiencia completa de <strong>inteligencia de datos aplicada</strong>, diseñada para que puedas construir, enseñar y compartir dashboards con impacto real.</p>
+
+  <p>Desde el primer momento, tu viaje comenzó con una <strong>aplicación web que genera datos ficticios</strong> — como viste en la imagen inicial — permitiéndote crear datasets personalizados con fechas, productos, vendedores y miles de registros. Y lo mejor: puedes descargarlos en <code>Excel</code>, <code>CSV</code> o <code>JSON</code>, listos para practicar sin depender de datos reales.</p>
+
+  <hr>
+
+  <h3>📦 ¿Qué te llevas de este recurso?</h3>
+  <ul>
+    <li>🧪 Una <strong>app generadora de datos</strong> para simular escenarios reales y practicar sin límites.</li>
+    <li>📊 Una <strong>guía completa de medidas DAX</strong> con sintaxis validada, explicaciones claras y orden lógico.</li>
+    <li>🎨 Un <strong>layout profesional de dashboard</strong> con KPIs, segmentadores y gráficos bien distribuidos.</li>
+    <li>🏆 Un <strong>Gráfico de Pareto</strong> funcional, con acumulado, porcentaje y colores dinámicos.</li>
+    <li>📈 Visuales adicionales: barras comparativas, líneas de tendencia y tablas con KPIs.</li>
+    <li>🧠 Tips de diseño, storytelling y segmentación para que tu dashboard cuente una historia clara.</li>
+    <li>📥 Recursos listos para exportar, enseñar, viralizar y aplicar en proyectos reales.</li>
+  </ul>
+
+  <hr>
+
+  <h3>✅ Tips prácticos para seguir mejorando</h3>
+  <ul>
+    <li>🔍 <strong>Valida tus medidas</strong> en tablas antes de graficar. La tabla es tu laboratorio.</li>
+    <li>🎯 <strong>Simplifica visuales</strong>: menos ruido, más claridad.</li>
+    <li>🎨 <strong>Usa colores con intención</strong>: verde para éxito, rojo para alerta, dorado para foco.</li>
+    <li>⚡ <strong>Optimiza el rendimiento</strong>: evita cálculos pesados en visuales con muchos filtros.</li>
+    <li>👥 <strong>Itera con tu comunidad</strong>: comparte, recibe feedback y mejora en tiempo real.</li>
+  </ul>
+
+  <hr>
+
+  <h3>📌 Recomendaciones estratégicas</h3>
+  <ul>
+    <li>📚 <strong>Documenta tu lógica DAX</strong>: usa nombres claros, comentarios y estructura limpia.</li>
+    <li>🖼️ <strong>Crea versiones para presentación</strong>: oculta campos técnicos y enfócate en narrativa.</li>
+    <li>🌍 <strong>Comparte tus dashboards</strong>: los datos cobran vida cuando se discuten.</li>
+    <li>🤝 <strong>Conéctate con comunidades</strong>: participa en foros, grupos y eventos de Power BI.</li>
+    <li>📣 <strong>Publica tus recursos</strong>: reels, cápsulas, slides, tutoriales. Enseñar es multiplicar impacto.</li>
+  </ul>
+
+  <hr>
+
+  <h3>🚀 Acciona y no te quedes aqui:</h3>
+  <p>Ahora que dominas esta estructura, ¡es momento de aplicarla! Publica tu dashboard, compártelo con tu equipo o comunidad, y conviértelo en un recurso que inspire a otros.</p>
+
+  <blockquote>
+    <strong>Tu conocimiento merece ser visualizado.  
+    Tu visualización merece ser compartida.  
+    Tu historia merece ser contada.</strong>
+  </blockquote>
+
+  <p>💡 Mantente atento a las comunidades de datos, participa en debates, y nunca dejes de iterar tus dashboards. Cada visual que construyes es una oportunidad para enseñar, motivar y transformar decisiones.</p>
+
+  <p>🔥 El siguiente paso está en tus manos: <strong>crea, comparte y lidera con datos</strong>.</p>
+</div>
+
+<br>
+<br>
+<hr>
+
+
+
+
+
+<!-- =================================================================== -->
+<!-- ============== INICIO DE LA SECCIÓN DEL QUIZ PL-300 =============== -->
+<!-- =================================================================== -->
+<section class="guide-section">
+    <div class="guide-card" id="quiz-container">
+        <h2><i class="fas fa-graduation-cap" style="color: var(--accent-color-1);"></i>Examen de Certificación Power BI</h2>
+        
+        <!-- Pantalla de Inicio del Quiz -->
+        <div id="quiz-start-screen">
+            <p>Pon a prueba tus conocimientos sobre Power BI, DAX, Power Query y análisis de datos. ¿Estás listo para el reto?</p>
+            <div class="info-box">
+                <h4><i class="fas fa-info-circle"></i> Reglas del Examen:</h4>
+                <ul>
+                    <li><strong>Número de Preguntas:</strong> 50 preguntas seleccionadas aleatoriamente.</li>
+                    <li><strong>Tiempo Límite:</strong> 30 minutos.</li>
+                    <li><strong>Puntuación para Aprobar:</strong> 80% o más.</li>
+                    <li>Tu progreso se guardará si detienes el examen.</li>
+                </ul>
+            </div>
+            <button id="start-quiz-btn" class="quiz-btn">🚀 Iniciar Examen</button>
+            <button id="resume-quiz-btn" class="quiz-btn secondary-btn" style="display: none;">▶️ Reanudar Examen</button>
+            <button id="view-history-btn" class="quiz-btn secondary-btn" style="display: none;">📜 Ver Historial</button>
+        </div>
+
+        <!-- Pantalla Principal del Quiz -->
+        <div id="quiz-main-screen" class="hidden">
+            <div class="quiz-header">
+                <div id="quiz-progress">Pregunta 1 de 50</div>
+                <div id="quiz-timer">Tiempo: 30:00</div>
+            </div>
+            <div id="question-container">
+                <p id="question-text">Aquí va el texto de la pregunta...</p>
+            </div>
+            <div id="answer-options"></div>
+            <div class="quiz-controls">
+                <button id="stop-quiz-btn" class="quiz-btn danger-btn">⏹️ Detener Examen</button>
+            </div>
+        </div>
+
+        <!-- Pantalla de Resultados -->
+        <div id="quiz-results-screen" class="hidden">
+            <h3>Resultados del Examen</h3>
+            <div id="score-summary"></div>
+            <div id="certificate-form-container" class="hidden">
+                <h4>¡Felicidades! Has aprobado.</h4>
+                <p>Completa tus datos para generar tu certificado.</p>
+                <form id="certificate-form">
+                    <input type="text" id="user-name" placeholder="Nombre(s)" required>
+                    <input type="text" id="user-lastname" placeholder="Apellido(s)" required>
+                    <input type="email" id="user-email" placeholder="Correo Electrónico" required>
+                    <input type="text" id="user-country" placeholder="País" required>
+                    <button type="submit" class="quiz-btn">🎓 Generar Certificado</button>
+                </form>
+            </div>
+            <div class="results-actions">
+                <button id="retake-quiz-btn" class="quiz-btn secondary-btn hidden">🔁 Volver a Intentar</button>
+                <button id="review-answers-btn" class="quiz-btn secondary-btn">🧐 Revisar Último Intento</button>
+            </div>
+        </div>
+
+        <!-- Pantalla de Historial -->
+        <div id="quiz-history-screen" class="hidden">
+            <h3>Historial de Intentos</h3>
+            <div class="history-filters">
+                <button class="quiz-btn secondary-btn" data-filter="all">Todos</button>
+                <button class="quiz-btn secondary-btn" data-filter="passed">Aprobados</button>
+                <button class="quiz-btn secondary-btn" data-filter="failed">No Aprobados</button>
+            </div>
+            <div id="history-content"></div>
+            <div id="review-content" class="hidden"></div>
+            <button id="back-to-start-btn" class="quiz-btn secondary-btn">⬅️ Volver al Inicio</button>
+        </div>
+
+        <!-- Contenedor para el Certificado -->
+        <div id="certificate-wrapper" class="hidden">
+            <div id="certificate">
+                <div class="certificate-header">
+                    <img src="POWER_BI.png" alt="Power BI Logo" class="logo">
+                    <img src="MICROSOFT_LOGO.png" alt="Microsoft Logo" class="logo">
+                </div>
+                <h1>Certificado de Finalización</h1>
+                <p class="subtitle">Otorgado a:</p>
+                <h2 id="cert-user-name"></h2>
+                <p class="body-text">Por haber demostrado con éxito conocimientos y habilidades en <strong>conexión a fuentes de datos, Power Query, ETL, analítica de datos, funciones DAX, creación de medidas y visualizaciones</strong>, completando el reto de preparación para el examen de certificación <strong>PL-300 de Microsoft Power BI</strong>.</p>
+                <div class="stats">
+                    <div class="stat-item"><strong>Puntuación:</strong> <span id="cert-score"></span></div>
+                    <div class="stat-item"><strong>Correctas:</strong> <span id="cert-correct"></span></div>
+                    <div class="stat-item"><strong>Incorrectas:</strong> <span id="cert-incorrect"></span></div>
+                    <div class="stat-item"><strong>Tiempo:</strong> <span id="cert-time"></span></div>
+                </div>
+                <div class="signature-container">
+                    <p class="signature-text">Ing. Juancito Peña</p>
+                    <p class="signature-title">Creador del Curso</p>
+                </div>
+            </div>
+            <div class="certificate-actions">
+                <button id="download-png-btn" class="quiz-btn"><i class="fas fa-image"></i> Descargar PNG</button>
+                <button id="download-pdf-btn" class="quiz-btn"><i class="fas fa-file-pdf"></i> Descargar PDF</button>
+                <button id="back-to-quiz-start-btn" class="quiz-btn secondary-btn">⬅️ Volver al Inicio</button>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =================================================================== -->
+<!-- ================ FIN DE LA SECCIÓN DEL QUIZ PL-300 ================ -->
+<!-- =================================================================== -->
+
+
+    
+    <footer class="footer">
+        <p>&copy; 2025 | Diseñado y desarrollado con ❤️ por Juancito Peña</p>
+    </footer>
 
     <!-- The Modal -->
     <div id="profileModal" class="modal">
-        <!-- El contenido de la modal no ha cambiado -->
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close-button" onclick="closeModal()">&times;</span>
@@ -283,21 +876,20 @@
                     </ul>
                 </div>
                <div class="social-links">
-  <a href="https://www.linkedin.com/in/juancitope%C3%B1a/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-  <a href="https://github.com/JUANCITOPENA" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
- <a href="https://x.com/JuancitoPenaV" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
-  <a href="https://www.facebook.com/juancito.p.v" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-  <a href="https://www.youtube.com/@JuancitoDevV" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-  <a href="https://www.instagram.com/juancito.pena.v/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-</div>
-
+                  <a href="https://www.linkedin.com/in/juancitope%C3%B1a/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="https://github.com/JUANCITOPENA" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                  <a href="https://x.com/JuancitoPenaV" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
+                  <a href="https://www.facebook.com/juancito.p.v" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="https://www.youtube.com/@JuancitoDevV" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                  <a href="https://www.instagram.com/juancito.pena.v/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Establecer valores por defecto
+            // Establecer valores por defecto en formulario
             document.getElementById('startDate').value = '2025-01-02';
             const today = new Date();
             const year = today.getFullYear();
@@ -305,41 +897,51 @@
             const day = String(today.getDate()).padStart(2, '0');
             document.getElementById('endDate').value = `${year}-${month}-${day}`;
             
-            // Modal script
+            // Lógica de la ventana modal
             const modal = document.getElementById("profileModal");
             window.openModal = function() { modal.style.display = "block"; }
             window.closeModal = function() { modal.style.display = "none"; }
-            window.onclick = function(event) {
-                if (event.target == modal) closeModal();
-            }
+            window.onclick = function(event) { if (event.target == modal) closeModal(); }
         });
 
-        // --- LÓGICA DE GENERACIÓN Y EXPORTACIÓN ---
+        // Función para copiar código de los bloques
+        function copyCode(button) {
+            const codeBlock = button.closest('.code-block').querySelector('pre code');
+            const codeText = codeBlock.innerText;
+            
+            navigator.clipboard.writeText(codeText).then(() => {
+                const originalContent = button.innerHTML;
+                button.innerHTML = '¡Copiado!';
+                button.style.backgroundColor = 'var(--accent-color-1)';
+                button.style.color = 'white';
+                setTimeout(() => {
+                    button.innerHTML = originalContent;
+                    button.style.backgroundColor = '';
+                    button.style.color = '';
+                }, 2000);
+            }).catch(err => {
+                console.error('Error al copiar el texto: ', err);
+            });
+        }
 
+        // --- LÓGICA DE GENERACIÓN Y EXPORTACIÓN DE DATOS ---
         function generateRawData() {
-            // 1. Obtener y validar valores del formulario
             const start = document.getElementById("startDate").value;
             const end = document.getElementById("endDate").value;
             const count = parseInt(document.getElementById("recordCount").value);
             const vendorCount = parseInt(document.getElementById("vendors").value);
             const productCount = parseInt(document.getElementById("products").value);
-
             if (!start || !end || !count || !vendorCount || !productCount) {
                 alert("Por favor, completa todos los campos para generar el archivo.");
                 return null;
             }
-
             const startDate = new Date(start);
             const endDate = new Date(end);
-
-            // Datos base
             const entityNames = [ "LuxuryRD", "VogueElite", "ModaPremium", "EliteFashion", "SantoDomingo Luxe", "BellaModa", "RD Golden Fashion" ];
             const categories = ["Ropa", "Calzado", "Accesorios", "Carteras", "Joyas"];
             const locations = [ "Santo Domingo", "Santiago", "La Vega", "San Cristóbal", "Punta Cana", "San Pedro de Macorís", "Bávaro", "Puerto Plata" ];
             const realProducts = [ "Louis Vuitton Neverfull MM", "Louis Vuitton Keepall Bandoulière 55", "Louis Vuitton Onthego GM", "Louis Vuitton Run Away Sneaker", "Louis Vuitton Twist MM", "Louis Vuitton Brazza Wallet", "Gucci GG Marmont Matelassé", "Gucci Ace Leather Sneakers", "Gucci Ophidia GG Medium", "Gucci Jackie 1961", "Gucci Interlocking G Bracelet", "Prada Re-Edition 2005 Nylon Bag", "Prada Cloudbust Thunder Sneakers", "Prada Saffiano Leather Wallet", "Prada Cleo Brushed Leather Bag", "Balenciaga Triple S Sneakers", "Balenciaga Hourglass Small Handbag", "Balenciaga Track Sneakers", "Dior Book Tote", "Dior Saddle Bag", "Dior B22 Sneakers", "Dior CD Icon Necklace", "Chanel Classic Flap Bag", "Chanel Boy Bag", "Chanel Coco Handle Mini", "Chanel Logo Crystal Earrings", "Fendi Baguette Bag", "Fendi Sunshine Shopper", "Fendi Peekaboo Iconic Mini", "Versace Chain Reaction Sneakers", "Versace Medusa Biggie Sunglasses", "Versace La Medusa Bag", "Burberry Lola Bag", "Burberry Cashmere Scarf", "Burberry TB Crossbody Bag", "Off-White Industrial Belt", "Off-White Out Of Office Low Sneakers", "Off-White Arrow Hoodie" ];
             const products = realProducts.slice(0, productCount);
-
-            // 2. Generar los datos en un array de objetos
             let data = [];
             for (let i = 0; i < count; i++) {
                 const randomDate = new Date(startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime()));
@@ -348,87 +950,68 @@
                 const margin = parseFloat((sales - cost).toFixed(2));
                 const expenses = parseFloat((Math.random() * (1000 - 100) + 100).toFixed(2));
                 const profit = parseFloat((margin - expenses).toFixed(2));
-                
                 const day = String(randomDate.getDate()).padStart(2, "0");
                 const month = String(randomDate.getMonth() + 1).padStart(2, "0");
                 const year = randomDate.getFullYear();
-
                 data.push({
                     "Fecha": `${day}-${month}-${year}`,
                     "Entidad": entityNames[Math.floor(Math.random() * entityNames.length)],
                     "Producto": products[Math.floor(Math.random() * products.length)],
                     "Categoria": categories[Math.floor(Math.random() * categories.length)],
                     "Ubicacion": locations[Math.floor(Math.random() * locations.length)],
-                    "Ventas": sales,
-                    "Costo": cost,
-                    "Margen": margin,
-                    "Gastos": expenses,
-                    "Beneficio": profit,
-                    "Margen %": `${((margin / sales) * 100).toFixed(2)}%`,
-                    "Beneficio %": `${((profit / sales) * 100).toFixed(2)}%`
+                    "Ventas": sales, "Costo": cost, "Margen": margin, "Gastos": expenses, "Beneficio": profit,
+                    "Margen %": `${((margin / sales) * 100).toFixed(2)}%`, "Beneficio %": `${((profit / sales) * 100).toFixed(2)}%`
                 });
             }
             return data;
         }
-
         function downloadCSV(data) {
             const headers = Object.keys(data[0]);
             const csvRows = [headers.join(',')];
             for (const row of data) {
-                const values = headers.map(header => {
-                    const escaped = (''+row[header]).replace(/"/g, '\\"');
-                    return `"${escaped}"`;
-                });
+                const values = headers.map(header => `"${(''+row[header]).replace(/"/g, '\\"')}"`);
                 csvRows.push(values.join(','));
             }
-            const csvString = csvRows.join('\n');
-            triggerDownload(csvString, 'text/csv', 'luxury_sales_data.csv');
+            triggerDownload(csvRows.join('\n'), 'text/csv', 'luxury_sales_data.csv');
         }
-
         function downloadExcel(data) {
             const worksheet = XLSX.utils.json_to_sheet(data);
             const workbook = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(workbook, worksheet, "Datos de Ventas");
             XLSX.writeFile(workbook, "luxury_sales_data.xlsx");
         }
-
         function downloadJSON(data) {
-            const jsonString = JSON.stringify(data, null, 2); // El 2 es para formatear con indentación
-            triggerDownload(jsonString, 'application/json', 'luxury_sales_data.json');
+            triggerDownload(JSON.stringify(data, null, 2), 'application/json', 'luxury_sales_data.json');
         }
-        
         function triggerDownload(content, mimeType, fileName) {
             const blob = new Blob([content], { type: mimeType });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement("a");
-            a.style.display = 'none';
-            a.href = url;
-            a.download = fileName;
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-            document.body.removeChild(a);
+            a.style.display = 'none'; a.href = url; a.download = fileName;
+            document.body.appendChild(a); a.click();
+            window.URL.revokeObjectURL(url); document.body.removeChild(a);
         }
-
-        // Función principal que se llama desde los botones
-        window.handleExport = function(format) {
+        function handleExport(format) {
             const data = generateRawData();
-            if (!data) return; // Si la validación falla
-
+            if (!data) return;
             switch (format) {
-                case 'csv':
-                    downloadCSV(data);
-                    break;
-                case 'excel':
-                    downloadExcel(data);
-                    break;
-                case 'json':
-                    downloadJSON(data);
-                    break;
-                default:
-                    console.error("Formato de exportación no soportado:", format);
+                case 'csv': downloadCSV(data); break;
+                case 'excel': downloadExcel(data); break;
+                case 'json': downloadJSON(data); break;
+                default: console.error("Formato no soportado:", format);
             }
         }
     </script>
+
+
+<!-- =================================================================== -->
+<!-- ================ FIN DE LA SECCIÓN DEL QUIZ PL-300 ================ -->
+<!-- =================================================================== -->
+
+<script src="script.js"></script>
+<!-- Bibliotecas para generar PDF e Imagen del Certificado -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 </body>
 </html>
