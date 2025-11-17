@@ -7,7 +7,7 @@ Una plataforma web integral y de cero dependencias diseñada para ser el campo d
 
 **Ideal para analistas de datos, estudiantes, profesionales de BI y educadores** que necesitan practicar y enseñar Power BI sin depender de datos reales o confidenciales.
 
-![Dashboard Final de Power BI](dashboard.png)
+![Generador de DatosI](GENERADOR_DATOS.jpeg)
 
 ---
 
